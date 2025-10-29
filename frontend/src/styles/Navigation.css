@@ -1,7 +1,9 @@
 html {
   scroll-behavior: smooth;
 }
-
+body {
+  margin: 0;
+}
 .section {
   height: 100vh;
   padding: 60px;
@@ -9,31 +11,111 @@ html {
 
 .navbar {
   position: fixed;
-  top: 0;
-  max-width: 737px;
-  max-height: 67px;
-  background: white;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   top: 28px;
   left: 50%;
   transform: translateX(-50%);
+  max-width: 737px;
+  max-height: 47px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
   padding: 0 2rem;
   border-radius: 40px;
-  background: linear-gradient(to left, #000000, rgba(19, 81, 205, 0.6));
-  border: 1px solid white;
+
+  border: 0.000001px solid rgba(43, 54, 150, 0.5);
+  border-bottom: 2px solid rgba(200, 204, 244, 0.5);
+  backdrop-filter: blur(100px);
+
+  box-shadow: 0 8px 20px rgba(19, 81, 205, 0.2), 0 4px 10px rgba(0, 0, 0, 0.5);
+
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 10px 25px rgba(19, 81, 205, 0.25),
+    0 5px 15px rgba(0, 0, 0, 0.55);
 }
 
 .navbar li {
   list-style: none;
   cursor: pointer;
-  font-weight: 500;
   color: aliceblue;
+}
+.navbar li:hover {
+  transform: rotate(52deg);
+  transition: all 0.3s ease-in-out;
 }
 .navbar ul {
   display: flex;
   justify-content: space-between;
-  gap: 90px;
+  gap: 60px;
+  margin: 0px;
+  padding: 5px;
+}
+.navbar ul img {
+  height: 27px;
+  width: 27px;
+  margin: 0;
+}
+.nav-item {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-item:hover {
+  transform: rotate(12deg);
+}
+
+.nav-item img {
+  height: 27px;
+  width: 27px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Tooltip-style label */
+.nav-label {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  background: rgba(19, 81, 205, 0.9);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.45s ease;
+  white-space: nowrap;
+}
+
+/* Small triangle below label */
+.nav-label::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid rgba(19, 81, 205, 0.9);
+}
+
+/* Show label on hover */
+.nav-item:hover .nav-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-item:hover img {
+  filter: brightness(0) saturate(100%) invert(32%) sepia(89%) saturate(2987%)
+    hue-rotate(212deg) brightness(100%) contrast(101%);
+}
+/* Active state */
+.nav-item.active img {
+  filter: brightness(0) saturate(100%) invert(32%) sepia(89%) saturate(2987%)
+    hue-rotate(212deg) brightness(100%) contrast(101%);
+  transform: scale(1.1);
 }
