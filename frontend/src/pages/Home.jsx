@@ -50,13 +50,12 @@ export default function Home() {
         </div>
       </div>
 
-<div className="home-footer">
-  <img src="telegram.png" alt="telegram" className="footer-icon" />
-  <img src="github.png" alt="github" className="footer-icon" />
-  <img src="x.png" alt="x" className="footer-icon" />
-  <img src="linked-in.png" alt="linked-in" className="footer-icon" />
-</div>
-
+      <div className="home-footer">
+        <img src="telegram.png" alt="telegram" className="footer-icon" />
+        <img src="github.png" alt="github" className="footer-icon" />
+        <img src="x.png" alt="x" className="footer-icon" />
+        <img src="linked-in.png" alt="linked-in" className="footer-icon" />
+      </div>
     </section>
   );
 }
