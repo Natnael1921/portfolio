@@ -15,25 +15,27 @@
 .about-page {
   background: linear-gradient(90deg, var(--bg-1) 0%, var(--bg-2) 100%);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   gap: 10%;
-  padding: 60px 9%;
-  height: 109vh;
+  padding: 50px 3% 0px 3%;
+  height: auto;
   color: white;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto;
   overflow: hidden;
 }
 
 /* --------- LEFT SECTION --------- */
-.about-left-section {
-  width: 51%;
-}
+
 
 .about-left-section h1 {
   font-size: 44px;
   font-weight: 700;
   margin: 0;
   letter-spacing: -0.5px;
+  text-align: center;
+    color: var(--muted);
+
 }
 
 .about-left-section span {
@@ -44,30 +46,43 @@
   color: var(--muted);
   line-height: 1.6;
   margin-top: 14px;
-  max-width: 90%;
+  text-align: center;
 }
 
 /* --------- "WHAT I DO" --------- */
 .what-i-do-card-container {
   margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.bottom-card-container{
+  display: flex;
+  gap: 25px;
 }
 
 .what-i-do-card-container h2 {
   font-size: 28px;
-  color: white;
-  margin-bottom: 20px;
+  color: var(--muted);
+  text-align: center;
 }
-
+.what-i-do-card-container h3{
+  font-size: 28px;
+  color: var(--muted);
+  text-align: center;
+}
 .top-card-container {
   display: flex;
   gap: 20px;
   margin: 0;
+  padding-left: 20%;
 }
 
 .what-i-do-card {
   height: 125px;
   padding: 18px 22px;
-  width: 318px;
+  width: 338px;
   background: rgba(11, 102, 255, 0.06);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
@@ -95,67 +110,62 @@
   font-size: 14px;
 }
 
-.bottom-card {
-  margin-left: 10%;
-  margin-top: 5%;
-}
 
 /* --------- RIGHT SECTION --------- */
 .about-right-section {
   display: flex;
-  justify-content: center; /* centers all columns together */
-  align-items: flex-start;
-  gap: 21%; /*  tighter spacing so right skills don’t go off-screen */
-  padding-top: 8%;
-  width: 42%;
+  flex-direction: column;
+  align-items: center;
+  padding: 8% 2%;
+  width: 100%;
   box-sizing: border-box;
 }
 
-/*  */
-.skill-container {
+.tech-header {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #0b66ff;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Skills grid */
+.skills-grid {
   display: flex;
-  flex-direction: column;
+  gap: 40px 120px;
+  justify-items: center;
   align-items: center;
-  gap: 90px;
+  width: 60%;
+  flex-wrap: wrap ;
 }
 
-.middle-skill {
-  padding-top: 80px; 
-}
-
-
-/* --------- SKILL ICONS --------- */
-.skill-container img {
-  width: 60px;
-  filter: drop-shadow(0 0 4px rgba(11, 102, 255, 0.3));
-  transition: all 0.3s ease;
-}
-
-.skill-container img:hover {
-  transform: scale(1.09);
-  cursor: pointer;
-  filter: drop-shadow(0 0 12px rgba(11, 102, 255, 0.8));
-  transform: rotateY(180deg);
-  transition: all 1.3s;
-}
-
-/* Tooltip label styling (appears when hovered) */
+/* Skill item */
 .skill-item {
   position: relative;
+  transition: transform 0.3s ease;
 }
 
 .skill-item img {
   width: 64px;
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 4px rgba(11, 102, 255, 0.3));
+  border-radius: 12px;
 }
 
+.skill-item:hover img {
+  transform: scale(1.2) rotateY(180deg);
+  filter: drop-shadow(0 0 12px rgba(11, 102, 255, 0.8));
+}
+
+/* Tooltip */
 .tooltip {
   position: absolute;
-  bottom: 90%;
+  bottom: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(5px);
-  background: rgba(11, 102, 255, 0.85);
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(11, 102, 255, 0.9);
   color: white;
-  padding: 4px 10px;
+  padding: 6px 12px;
   border-radius: 8px;
   font-size: 12px;
   opacity: 0;
@@ -166,29 +176,5 @@
 
 .skill-item:hover .tooltip {
   opacity: 1;
-  transform: translateX(-50%) translateY(-4px);
-}
-
-/* --------- RESPONSIVE --------- */
-@media (max-width: 1024px) {
-  .about-page {
-    flex-direction: column;
-    height: auto;
-    padding: 50px 8%;
-  }
-
-  .about-left-section {
-    width: 100%;
-  }
-
-  .about-right-section {
-    justify-content: center;
-    gap: 80px;
-    padding-top: 60px;
-  }
-
-  .bottom-card {
-    margin-left: 0;
-    align-self: center;
-  }
+  transform: translateX(-50%) translateY(-6px);
 }

@@ -8,14 +8,14 @@ export default function About() {
           About<span> me</span>
         </h1>
         <p>
-          Hi, I’m <strong>Natnael Mekonnen</strong>, a creative web developer and
-          third-year Computer Science student at Hawassa University. I love
+          Hi, I’m <strong>Natnael Mekonnen</strong>, a creative web developer
+          and third-year Computer Science student at Hawassa University. I love
           crafting digital experiences that combine elegant design and powerful
           functionality.
         </p>
 
         <div className="what-i-do-card-container">
-          <h2>What I do</h2>
+          <h3>What I do</h3>
           <div className="top-card-container">
             <div className="what-i-do-card">
               <h2>Web Development</h2>
@@ -32,19 +32,29 @@ export default function About() {
               </p>
             </div>
           </div>
-
-          <div className="what-i-do-card bottom-card">
-            <h2>Backend Development</h2>
-            <p>
-              I develop secure, scalable backends and efficient API systems with
-              Node.js and MySQL.
-            </p>
+          <div className="bottom-card-container">
+            <div className="what-i-do-card">
+              <h2 className="what-i-do-h2">Backend Development</h2>
+              <p>
+                I develop secure, scalable backends and efficient API systems
+                with Node.js . express.js . REST APIs
+              </p>
+            </div>
+            <div className="what-i-do-card">
+              <h2>Database</h2>
+              <p>MySQL, MongoDB,</p>
+            </div>
+            <div className="what-i-do-card">
+              <h2>Testing</h2>
+              <p>Unit Testing, Jest</p>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="about-right-section">
-        <div className="skill-container">
+        <h3 className="tech-header">Technologies</h3>
+        <div className="skills-grid">
           <div className="skill-item">
             <img src="react.png" alt="React" />
             <span className="tooltip">React</span>
@@ -54,12 +64,9 @@ export default function About() {
             <span className="tooltip">Express</span>
           </div>
           <div className="skill-item">
-            <img src="tailwind.png" alt="Tailwind" />
+            <img src="tailwind.png" alt="Tailwind CSS" />
             <span className="tooltip">Tailwind CSS</span>
           </div>
-        </div>
-
-        <div className="skill-container middle-skill">
           <div className="skill-item">
             <img src="mysql.png" alt="MySQL" />
             <span className="tooltip">MySQL</span>
@@ -68,20 +75,17 @@ export default function About() {
             <img src="js.png" alt="JavaScript" />
             <span className="tooltip">JavaScript</span>
           </div>
-        </div>
-
-        <div className="skill-container">
           <div className="skill-item">
             <img src="node.png" alt="Node.js" />
             <span className="tooltip">Node.js</span>
           </div>
           <div className="skill-item">
-            <img src="X.png" alt="Tool" />
-            <span className="tooltip">Other Tool</span>
-          </div>
-          <div className="skill-item">
             <img src="css.png" alt="CSS3" />
             <span className="tooltip">CSS3</span>
+          </div>
+          <div className="skill-item">
+            <img src="MongoDB.png" alt="MongoDB" />
+            <span className="tooltip">Docker</span>
           </div>
         </div>
       </div>
