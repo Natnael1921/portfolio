@@ -23,14 +23,14 @@ export default function Contact() {
 
   return (
     <div id="contact" className="contact-page" data-aos="fade-up">
-      <div className="contact-container">
-        <section className="contact-left">
-          <h2 className="contact-title">
+      <div className="contact-container" data-aos="fade-up">
+        <section className="contact-left" data-aos="fade-up">
+          <h2 className="contact-title" data-aos="fade-up">
             Lets <span className="accent">Talk</span> !
           </h2>
           <div className="hr" />
 
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <form className="contact-form" onSubmit={handleSubmit} data-aos="fade-up">
             <div className="row">
               <div className="field">
                 <label htmlFor="firstName">First name</label>
@@ -90,17 +90,18 @@ export default function Contact() {
           </form>
         </section>
 
-        <aside className="contact-right">
+        <aside className="contact-right" data-aos="fade-up">
           <div className="contact-image-wrap">
             <img
               className="contact-image"
               src="contact1.png"
               alt="contact visual"
+              data-aos="fade-up"
             />
           </div>
 
-          <div className="contact-info">
-            <div className="info-row">
+          <div className="contact-info" data-aos="fade-up">
+            <div className="info-row" data-aos="fade-up">
               <svg
                 className="icon"
                 viewBox="0 0 24 24"

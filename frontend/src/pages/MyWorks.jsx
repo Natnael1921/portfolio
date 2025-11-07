@@ -20,19 +20,19 @@ export default function MyWorks() {
   ];
 
   return (
-    <section id="myworks" className="section myworks">
-      <h1>
+    <section id="myworks" className="section myworks" data-aos="fade-up">
+      <h1 data-aos="fade-up">
         My Recent <span>Works</span>
       </h1>
 
-      <div className="works-container">
+      <div className="works-container" data-aos="fade-up">
         {[...Array(2)].map((_, i) => (
           <div key={i} className="works-group">
             {works.map((work, index) => (
-              <div key={index + i * works.length} className="works-card">
-                <img src={work.img} alt={work.title} />
-                <h2>{work.title}</h2>
-                <p>{work.desc}</p>
+              <div key={index + i * works.length} className="works-card" data-aos="fade-up">
+                <img src={work.img} alt={work.title} data-aos="fade-up"/>
+                <h2 data-aos="fade-up">{work.title}</h2>
+                <p data-aos="fade-up">{work.desc}</p>
               </div>
             ))}
           </div>
