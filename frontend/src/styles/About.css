@@ -105,13 +105,13 @@
   display: flex;
   justify-content: center; /* centers all columns together */
   align-items: flex-start;
-  gap: 21%; /* ✅ tighter spacing so right skills don’t go off-screen */
+  gap: 21%; /*  tighter spacing so right skills don’t go off-screen */
   padding-top: 8%;
   width: 42%;
   box-sizing: border-box;
 }
 
-/* Keep your original vertical spacing style */
+/*  */
 .skill-container {
   display: flex;
   flex-direction: column;
