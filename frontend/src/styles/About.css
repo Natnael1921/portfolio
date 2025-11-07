@@ -116,11 +116,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 90px; /* ✅ uniform spacing between icons */
+  gap: 90px;
 }
 
 .middle-skill {
-  padding-top: 80px; /* ✅ keeps staggered height look but fits within page */
+  padding-top: 80px; 
 }
 
 

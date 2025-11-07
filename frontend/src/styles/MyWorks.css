@@ -1,0 +1,116 @@
+:root {
+  --bg-1: #020613;
+  --bg-2: #07102a;
+  --panel: rgba(255, 255, 255, 0.03);
+  --neon: #0b66ff;
+  --glass-border: rgba(15, 70, 140, 0.35);
+}
+
+/* - SECTION - */
+.myworks {
+  background: linear-gradient(90deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  color: #eaf2ff;
+  text-align: center;
+  padding: 80px 0;
+  overflow: hidden;
+  position: relative;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto;
+}
+
+.myworks h1 {
+  font-size: 44px;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.myworks span {
+  color: var(--neon);
+}
+
+/* - CONTAINER - */
+.works-container {
+  display: flex;
+  width: max-content;
+  gap: 60px;
+  animation: scrollBackAndForth 45s ease-in-out infinite alternate;
+  padding: 0 5%;
+}
+
+@keyframes scrollBackAndForth {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* - GROUP - */
+.works-group {
+  display: flex;
+  gap: 60px;
+}
+
+/* - CARD - */
+.works-card {
+  flex: 0 0 380px;
+  background: rgba(11, 102, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  box-shadow: 0 0 40px rgba(11, 102, 255, 0.08);
+  overflow: hidden;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.works-card img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 18px;
+  transition: all 0.4s ease;
+}
+
+.works-card h2 {
+  color: var(--neon);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.works-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* - HOVER EFFECTS - */
+.works-container:hover {
+  animation-play-state: paused;
+}
+
+.works-container:hover .works-card {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.works-container:hover .works-card:hover {
+  opacity: 1;
+  transform: translateY(-10px) scale(1.05);
+  border-color: var(--neon);
+  box-shadow: 0 0 50px rgba(11, 102, 255, 0.3);
+}
+
+/* -RESPONSIVE- */
+@media (max-width: 900px) {
+  .works-container {
+    animation: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .works-card {
+    width: 90%;
+  }
+}
