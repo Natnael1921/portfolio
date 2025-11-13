@@ -14,7 +14,6 @@ body {
   top: 28px;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 737px;
   max-height: 47px;
   display: flex;
   justify-content: center;
@@ -31,7 +30,12 @@ body {
   z-index: 1000;
   transition: all 0.3s ease;
 }
-
+.logo{
+position: fixed;
+left: 3%;
+top: 3%;
+z-index: 2000;
+}
 .navbar:hover {
   box-shadow: 0 10px 25px rgba(19, 81, 205, 0.25),
     0 5px 15px rgba(0, 0, 0, 0.55);
@@ -119,3 +123,111 @@ body {
     hue-rotate(212deg) brightness(100%) contrast(101%);
   transform: scale(1.1);
 }
+/* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 28px;
+  right: 6%;
+  width: 34px;
+  height: 25px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 2001;
+}
+
+.hamburger span {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #1269ff, #4fa3ff);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(11, 102, 255, 0.8);
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
+}
+
+/* RESPONSIVE NAVBAR  */
+@media (max-width: 900px) {
+  .navbar {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    background: rgba(19, 81, 205, 0.15);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 20px;
+    border: 1px solid rgba(19, 81, 205, 0.6);
+
+    padding: 55px 70px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+
+  .navbar.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .navbar ul img {
+    display: none;
+  }
+
+  .nav-label {
+    position: static;
+    opacity: 1;
+    background: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .nav-label::after {
+    display: none;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none !important;
+  }
+
+  .nav-item:hover {
+    transform: none;
+  }
+  .logo {
+    top: 15px;
+    left: 8%;
+    width: 42px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+

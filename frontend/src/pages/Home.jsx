@@ -1,10 +1,18 @@
 import "../styles/Home.css";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const cols = 25;
   const rows = 40;
   const total = cols * rows;
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth <= 900);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
   return (
     <section id="home" className="section homepage">
       {/*  Background dots  */}
@@ -25,32 +33,41 @@ export default function Home() {
       </div>
 
       <div className="home-main-container">
-        <div className="home-left-side"data-aos="fade-up" >
-          <h1 data-aos="fade-up">Natnael Mekonnen</h1>
-          <h3 data-aos="fade-up">Creative developer</h3>
-          <p data-aos="fade-up">
+        <div className="home-left-side" data-aos="fade-up">
+          <h1>Natnael Mekonnen</h1>
+          <h3>Creative Developer</h3>
+          {isMobile && (
+            <div className="image-circle mobile-image">
+              <img src="profile.png" alt="Profile" />
+            </div>
+          )}
+
+          <p>
             I love building digital experiences that feel smooth, human, and
             alive. Every project I create is focused on performance,
             scalability, and emotion.
           </p>
+
           <div className="cta-container">
             <div className="my-works-btn">
-              <button data-aos="fade-up">My works</button>
+              <button>My works</button>
             </div>
             <div className="contact-me-btn">
-              <button data-aos="fade-up">Contact me</button>
+              <button>Contact me</button>
             </div>
           </div>
         </div>
 
-        <div className="home-right-side" data-aos="fade-up">
-          <div className="image-circle">
-            <img src="profile.png" alt="Profile" data-aos="fade-left"/>
+        {!isMobile && (
+          <div className="home-right-side" data-aos="fade-up">
+            <div className="image-circle">
+              <img src="profile.png" alt="Profile" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
-      <div className="home-footer" data-aos="fade-up">
+      <div className="home-footer">
         <img src="telegram.png" alt="telegram" className="footer-icon" />
         <img src="github.png" alt="github" className="footer-icon" />
         <img src="x.png" alt="x" className="footer-icon" />
