@@ -17,14 +17,14 @@ export default function About() {
         <div className="what-i-do-card-container" data-aos="fade-up">
           <h3 data-aos="fade-up">What I do</h3>
           <div className="top-card-container">
-            <div className="what-i-do-card" data-aos="fade-up">
+            <div className="what-i-do-card card-1" data-aos="fade-left">
               <h2>Web Development</h2>
               <p>
                 I build responsive, high-performance websites using modern
                 frameworks and clean, maintainable code.
               </p>
             </div>
-            <div className="what-i-do-card" data-aos="fade-up">
+            <div className="what-i-do-card card-2" data-aos="fade-right">
               <h2>UI/UX Design</h2>
               <p>
                 I design intuitive interfaces that balance creativity,
@@ -33,18 +33,18 @@ export default function About() {
             </div>
           </div>
           <div className="bottom-card-container">
-            <div className="what-i-do-card" data-aos="fade-up">
+            <div className="what-i-do-card card-3" data-aos="fade-left">
               <h2 className="what-i-do-h2">Backend Development</h2>
               <p>
                 I develop secure, scalable backends and efficient API systems
                 with Node.js . express.js . REST APIs
               </p>
             </div>
-            <div className="what-i-do-card" data-aos="fade-up">
+            <div className="what-i-do-card card-4" data-aos="fade-right">
               <h2>Database</h2>
               <p>MySQL, MongoDB,</p>
             </div>
-            <div className="what-i-do-card" data-aos="fade-up">
+            <div className="what-i-do-card card-5" data-aos="fade-left">
               <h2>Testing</h2>
               <p>Unit Testing, Jest</p>
             </div>
