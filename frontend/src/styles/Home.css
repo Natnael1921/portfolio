@@ -25,28 +25,30 @@
 }
 .home-left-side {
   padding-left: 0%;
-  padding-top: 7%;
+  padding-top: 8%;
   width: 59%;
   position: relative;
   overflow: hidden;
 }
 .home-left-side h1 {
-  font-size: clamp(40px, 8vw, 76px);
+  font-size: clamp(30px, 8vw, 56px);
   font-family: "Langar", cursive;
-  color: rgb(192, 220, 243);
+  color: rgba(192, 220, 243);
+  letter-spacing: 8px;
+  word-spacing: 15px;
 }
 .home-left-side h3 {
-  font-size: 30px;
-  color: rgb(122, 122, 233);
-  text-align: center;
-  padding-bottom: 40px;
+  font-size: 25px;
+  color: rgb(173, 206, 234);
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
 .home-left-side p {
-  color: #f1f1f1;
-  font-size: 20px;
-  padding-bottom: 50px;
+  color: #bcbbbb;
+  font-size: 15px;
+  padding-bottom: 30px;
   width: 90%;
-  letter-spacing: 3px;
+  word-spacing: 5px;
 }
 .home-left-side h1,
 .home-left-side h3,
@@ -61,8 +63,8 @@
 }
 .my-works-btn button,
 .contact-me-btn button {
-  padding: 12px 58px;
-  font-size: 1rem;
+  padding: 12px 48px;
+  font-size: 0.8rem;
   border: none;
   border-radius: 8px;
   background-color: #1351cd;
@@ -72,8 +74,9 @@
   box-shadow: 0 6px 15px rgba(1, 9, 24, 0.3);
 }
 .my-works-btn button {
-  background-color: blue;
+  background-color: rgb(2, 2, 157);
   color: white;
+  border: 1px solid #1351cd;
 }
 .contact-me-btn button {
   background-color: #1a1a1a;
@@ -193,7 +196,7 @@
   transform: scale(1.2);
 }
 
-body{
+body {
   background-color: #07102a;
 }
 .mobile-image {
@@ -207,7 +210,6 @@ body{
 
 /*RESPONSIVE*/
 @media (max-width: 900px) {
-
   .homepage {
     height: auto;
     padding: 120px 0 60px 0;
@@ -243,7 +245,7 @@ body{
     margin: 0 auto 35px auto;
     font-size: 17px;
     line-height: 1.55;
-    letter-spacing: 1.5px; 
+    letter-spacing: 1.5px;
     padding: 0;
   }
   .mobile-image {

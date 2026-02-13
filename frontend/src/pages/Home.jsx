@@ -35,7 +35,7 @@ export default function Home() {
       <div className="home-main-container">
         <div className="home-left-side" data-aos="fade-up">
           <h1>Natnael Mekonnen</h1>
-          <h3>Creative Developer</h3>
+          <h3>Full-Stack Developer</h3>
           {isMobile && (
             <div className="image-circle mobile-image">
               <img src="profile.png" alt="Profile" />
@@ -43,14 +43,15 @@ export default function Home() {
           )}
 
           <p>
-            I love building digital experiences that feel smooth, human, and
-            alive. Every project I create is focused on performance,
-            scalability, and emotion.
+            I LOVE BUILDING DIGITAL EXPERIENCES THAT FEEL SMOOTH, HUMAN, AND
+            ALIVE. EVERY PROJECT I CREATE IS FOCUSED ON PERFORMANCE,
+            SCALABILITY, AND EMOTION. 
+            
           </p>
-
+          <p>CREATIVE DEVELOPER, DESIGNER, PROBLEM SOLVER </p>
           <div className="cta-container">
             <div className="my-works-btn">
-              <button>My works</button>
+              <button>View Projects</button>
             </div>
             <div className="contact-me-btn">
               <button>Contact me</button>

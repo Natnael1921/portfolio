@@ -3,7 +3,7 @@ import "aos/dist/aos.css";
 
 export const initAOS = () => {
   AOS.init({
-    duration: 2000,
+    duration: 1200,
     easing: "ease-in-out",
     once: false,
   });
