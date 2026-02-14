@@ -212,7 +212,7 @@ body {
 @media (max-width: 900px) {
   .homepage {
     height: auto;
-    padding: 120px 0 60px 0;
+    padding: 100px 0 60px 0;
     text-align: center;
   }
 
@@ -231,19 +231,19 @@ body {
   }
 
   .home-left-side h1 {
-    font-size: clamp(40px, 11vw, 65px);
+    font-size: clamp(10px, 11vw, 27px);
     white-space: nowrap;
   }
 
   .home-left-side h3 {
-    font-size: 22px;
+    font-size: 20px;
     padding-bottom: 58px;
   }
 
   .home-left-side p {
     width: 85%;
     margin: 0 auto 35px auto;
-    font-size: 17px;
+    font-size: 14px;
     line-height: 1.55;
     letter-spacing: 1.5px;
     padding: 0;

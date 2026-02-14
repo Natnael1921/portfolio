@@ -15,7 +15,7 @@ export default function Home() {
   }, []);
   useEffect(() => {
     fetch(
-      "http://my-portfolio-management-backend.onrender.com/api/visitors/increment",
+      "https://my-portfolio-management-backend.onrender.com/api/visitors/increment",
       {
         method: "POST",
       },
