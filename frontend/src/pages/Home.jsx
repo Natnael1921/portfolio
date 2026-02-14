@@ -13,6 +13,22 @@ export default function Home() {
     window.addEventListener("resize", checkScreen);
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
+  useEffect(() => {
+    fetch(
+      "http://my-portfolio-management-backend.onrender.com/api/visitors/increment",
+      {
+        method: "POST",
+      },
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Visitor count incremented:", data.totalVisits);
+      })
+      .catch((err) => {
+        console.log("Error incrementing visitor:", err);
+      });
+  }, []);
+
   return (
     <section id="home" className="section homepage">
       {/*  Background dots  */}
@@ -45,8 +61,7 @@ export default function Home() {
           <p>
             I LOVE BUILDING DIGITAL EXPERIENCES THAT FEEL SMOOTH, HUMAN, AND
             ALIVE. EVERY PROJECT I CREATE IS FOCUSED ON PERFORMANCE,
-            SCALABILITY, AND EMOTION. 
-            
+            SCALABILITY, AND EMOTION.
           </p>
           <p>CREATIVE DEVELOPER, DESIGNER, PROBLEM SOLVER </p>
           <div className="cta-container">
