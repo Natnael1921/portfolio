@@ -32,7 +32,7 @@
   display: flex;
   width: max-content;
   gap: 60px;
-  animation: scrollBackAndForth 45s ease-in-out infinite alternate;
+  animation: scrollBackAndForth 25s ease-in-out infinite alternate;
   padding: 0 5%;
 }
 
@@ -166,3 +166,87 @@
   }
 }
 
+/* IMAGE WRAPPER */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* IMAGE */
+.project-image {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+/* OVERLAY */
+.image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(2, 6, 19, 0.3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  z-index: 5;
+}
+
+/* SHOW ON HOVER */
+.image-wrapper:hover .image-overlay {
+  opacity: 1;
+}
+
+/* BUTTON BASE */
+.overlay-btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+}
+
+.overlay-btn.live {
+  background: linear-gradient(135deg, #0b66ff, #00c6ff);
+  color: white;
+
+  box-shadow:
+    0 0 10px rgba(11,102,255,0.7),
+    0 0 20px rgba(11,102,255,0.4);
+}
+
+.overlay-btn.live:hover {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 20px rgba(11,102,255,1),
+    0 0 40px rgba(11,102,255,0.7);
+}
+
+/* GITHUB BUTTON */
+.overlay-btn.github {
+  background: black;
+  color: white;
+
+  box-shadow:
+    0 0 10px rgba(14, 38, 148, 0.2);
+}
+
+.overlay-btn.github:hover {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 20px rgba(109, 139, 199, 0.6);
+}

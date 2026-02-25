@@ -230,7 +230,11 @@ textarea {
 .contact-page.light {
   color: #051428;
 }
+.social-icon{
+  height: 30px;
+  width: 30;
 
+}
 /* Responsive */
 @media (max-width: 980px) {
   .contact-container {

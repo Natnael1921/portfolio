@@ -30,7 +30,11 @@ export default function Contact() {
           </h2>
           <div className="hr" />
 
-          <form className="contact-form" onSubmit={handleSubmit} data-aos="fade-up">
+          <form
+            className="contact-form"
+            onSubmit={handleSubmit}
+            data-aos="fade-up"
+          >
             <div className="row">
               <div className="field">
                 <label htmlFor="firstName">First name</label>
@@ -114,7 +118,9 @@ export default function Contact() {
                   d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.16 21 3 14.84 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"
                 />
               </svg>
-              <span className="contact-text">+251910895476</span>
+              <a href="tel:+251910895476">
+                <span className="contact-text">+251910895476</span>
+              </a>
             </div>
 
             <div className="divider" />
@@ -132,45 +138,37 @@ export default function Contact() {
                   d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5L4 8V6l8 5 8-5v2z"
                 />
               </svg>
-              <span className="contact-text">nnatnaelmekonnen19@gmail.com</span>
+              <a href="mailto:nnatnaelmekonnen19@gmail.com">
+                <span className="contact-text">
+                  nnatnaelmekonnen19@gmail.com
+                </span>
+              </a>
             </div>
           </div>
 
           <div className="socials">
-            <a className="social" href="#" aria-label="telegram (demo)">
-              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden>
-                <path
-                  fill="currentColor"
-                  d="M22 4L2 12.5 6.5 15 9 21l3-9 9.5-8z"
-                />
-              </svg>
+            <a
+              className="social"
+              href="https://t.me/Nathnaelmekonnen"
+              aria-label="telegram (demo)"
+            >
+              <img className="social-icon" src="telegram.png" />
             </a>
 
-            <a className="social" href="#" aria-label="github (demo)">
-              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden>
-                <path
-                  fill="currentColor"
-                  d="M12 .5A12 12 0 000 12.7c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6-.8 1.6-.8.8-1.4 2.1-1 2.6-.8.1-.7.4-1 .7-1.3-2.6-.3-5.3-1.3-5.3-6a4.7 4.7 0 011.2-3.3 4.4 4.4 0 01.1-3.2s1-.3 3.3 1.2a11.4 11.4 0 016 0c2.2-1.5 3.2-1.2 3.2-1.2.8 1.6.3 2.7.1 3.2a4.7 4.7 0 011.2 3.3c0 4.7-2.7 5.6-5.3 5.9.4.4.7 1 .7 2v3c0 .3.2.7.8.6A12 12 0 0024 .5z"
-                />
-              </svg>
+            <a
+              className="social"
+              href="https://github.com/Natnael1921"
+              aria-label="github (demo)"
+            >
+              <img className="social-icon" src="github.png" />
             </a>
 
-            <a className="social" href="#" aria-label="x (demo)">
-              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden>
-                <path
-                  fill="currentColor"
-                  d="M19 6.4l-1.4-1.4L12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"
-                />
-              </svg>
+            <a className="social" href="https://x.com/NatnaelMek896" aria-label="x (demo)">
+              <img className="social-icon" src="x.png" />
             </a>
 
-            <a className="social" href="#" aria-label="linkedin (demo)">
-              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden>
-                <path
-                  fill="currentColor"
-                  d="M4.98 3.5A2.5 2.5 0 002.5 6v12a2.5 2.5 0 002.48 2.5h0A2.5 2.5 0 007.96 18V6A2.5 2.5 0 004.98 3.5zM8 9h3v9H8V9zm4-4h3v1.3h.1a3.3 3.3 0 013-1.7c3.2 0 3.8 2.1 3.8 4.9V18h-3v-4.7c0-1.1 0-2.6-1.6-2.6S13 12 13 13.7V18h-3V5z"
-                />
-              </svg>
+            <a className="social" href="https://linkedin.com/in/natnael-mekonnen" aria-label="linkedin (demo)">
+              <img className="social-icon" src="linked-in.png" />
             </a>
           </div>
         </aside>

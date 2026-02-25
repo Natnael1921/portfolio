@@ -54,7 +54,7 @@ export default function Home() {
           <h3>Full-Stack Developer</h3>
           {isMobile && (
             <div className="image-circle mobile-image">
-              <img src="profile.png" alt="Profile" />
+              <img src="Natnael.jpg" alt="Profile" />
             </div>
           )}
 
@@ -65,29 +65,42 @@ export default function Home() {
           </p>
           <p>CREATIVE DEVELOPER, DESIGNER, PROBLEM SOLVER </p>
           <div className="cta-container">
-            <div className="my-works-btn">
-              <button>View Projects</button>
-            </div>
-            <div className="contact-me-btn">
-              <button>Contact me</button>
-            </div>
+            <a href="#myworks">
+              <div className="my-works-btn">
+                <button>View Projects</button>
+              </div>
+            </a>
+
+            <a href="#contact">
+              <div className="contact-me-btn">
+                <button>Contact me</button>
+              </div>
+            </a>
           </div>
         </div>
 
         {!isMobile && (
           <div className="home-right-side" data-aos="fade-up">
             <div className="image-circle">
-              <img src="profile.png" alt="Profile" />
+              <img src="Natnael.jpg" alt="Profile" />
             </div>
           </div>
         )}
       </div>
 
       <div className="home-footer">
-        <img src="telegram.png" alt="telegram" className="footer-icon" />
-        <img src="github.png" alt="github" className="footer-icon" />
-        <img src="x.png" alt="x" className="footer-icon" />
-        <img src="linked-in.png" alt="linked-in" className="footer-icon" />
+        <a href="https://t.me/Nathnaelmekonnen">
+          <img src="telegram.png" alt="telegram" className="footer-icon" />
+        </a>
+        <a href="https://github.com">
+          <img src="github.png" alt="github" className="footer-icon" />
+        </a>
+        <a href="https://x.com/NatnaelMek896">
+          <img src="x.png" alt="x" className="footer-icon" />
+        </a>
+        <a href="https://linkedin.com/in/natnael-mekonnen">
+          <img src="linked-in.png" alt="linked-in" className="footer-icon" />
+        </a>
       </div>
     </section>
   );

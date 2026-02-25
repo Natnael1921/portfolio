@@ -110,10 +110,11 @@
 }
 
 .image-circle img {
-  width: 80%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 20%;
+  object-position:top top;
+  border-radius: 24%;
 }
 .image-circle img:hover {
   transform: scale(1.25);
