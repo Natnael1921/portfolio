@@ -9,16 +9,40 @@ export default function Contact() {
     message: "",
   });
 
+  const [status, setStatus] = useState(null); // success | error
+  const [loading, setLoading] = useState(false);
+
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("submit", form);
-    alert("Message sent (demo). Replace handleSubmit with real API call.");
-    setForm({ firstName: "", lastName: "", email: "", message: "" });
+    setLoading(true);
+    setStatus(null);
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("success");
+        setForm({ firstName: "", lastName: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
+
+    setLoading(false);
   }
 
   return (
@@ -88,9 +112,20 @@ export default function Contact() {
               />
             </div>
 
-            <button className="btn-send" type="submit">
-              Send Message
+            <button className="btn-send" type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Send Message"}
             </button>
+
+            {status === "success" && (
+              <p style={{ color: "#00ffae", marginTop: "10px" }}>
+                Message sent successfully , Thank You !
+              </p>
+            )}
+            {status === "error" && (
+              <p style={{ color: "red", marginTop: "10px" }}>
+                Failed to send message. Try again.
+              </p>
+            )}
           </form>
         </section>
 
@@ -163,11 +198,19 @@ export default function Contact() {
               <img className="social-icon" src="github.png" />
             </a>
 
-            <a className="social" href="https://x.com/NatnaelMek896" aria-label="x (demo)">
+            <a
+              className="social"
+              href="https://x.com/NatnaelMek896"
+              aria-label="x (demo)"
+            >
               <img className="social-icon" src="x.png" />
             </a>
 
-            <a className="social" href="https://linkedin.com/in/natnael-mekonnen" aria-label="linkedin (demo)">
+            <a
+              className="social"
+              href="https://linkedin.com/in/natnael-mekonnen"
+              aria-label="linkedin (demo)"
+            >
               <img className="social-icon" src="linked-in.png" />
             </a>
           </div>
