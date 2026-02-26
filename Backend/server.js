@@ -1,62 +1,82 @@
-const express = require("express");
-const cors = require("cors");
-const nodemailer = require("nodemailer");
-require("dotenv").config();
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import { Resend } from "resend";
+
+dotenv.config();
 
 const app = express();
 
-app.use(cors());
+/* Security */
+app.use(helmet());
 app.use(express.json());
 
-/* EMAIL TRANSPORT */
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,       // TLS port
-  secure: false,   // use STARTTLS
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, 
-  },
-  tls: {
-    rejectUnauthorized: false, 
-  },
+/* CORS */
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "*",
+  })
+);
+
+/* Rate limit */
+const limiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
 });
 
-/* CONTACT ROUTE */
+app.use("/contact", limiter);
+
+/* Resend setup */
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+/* Contact route */
 app.post("/contact", async (req, res) => {
   try {
     const { firstName, lastName, email, message } = req.body;
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      subject: `Portfolio Contact from ${firstName} ${lastName}`,
+    if (!firstName || !lastName || !email || !message) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing fields",
+      });
+    }
+
+    await resend.emails.send({
+      from: "Portfolio <onboarding@resend.dev>",
+      to: process.env.RECEIVER_EMAIL,
+      subject: `New message from ${firstName} ${lastName}`,
       html: `
-        <h2>New Portfolio Message</h2>
+        <h2>New Portfolio Contact</h2>
+
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+
         <p><strong>Email:</strong> ${email}</p>
+
         <p><strong>Message:</strong></p>
+
         <p>${message}</p>
       `,
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 
     res.json({
       success: true,
       message: "Email sent successfully",
     });
-
   } catch (error) {
-    console.log(error);
+    console.error(error);
 
     res.status(500).json({
       success: false,
-      message: "Failed to send email",
+      message: "Email failed",
     });
   }
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+/* Start server */
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
