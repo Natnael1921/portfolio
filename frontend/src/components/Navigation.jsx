@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import "../styles/Navigation.css";
 
 export default function Navigation() {
@@ -16,6 +17,7 @@ export default function Navigation() {
     const handleScrollSpy = () => {
       const sections = ["home", "about", "myworks", "contact"];
       let current = active;
+
       sections.forEach((id) => {
         const section = document.getElementById(id);
         if (section) {
@@ -28,8 +30,10 @@ export default function Navigation() {
           }
         }
       });
+
       if (current !== active) setActive(current);
     };
+
     window.addEventListener("scroll", handleScrollSpy);
     return () => window.removeEventListener("scroll", handleScrollSpy);
   }, [active]);
@@ -38,14 +42,13 @@ export default function Navigation() {
     <div className="navigation">
       <img src="logo.png" className="logo" alt="Logo" />
 
-      {/* Hamburger Button */}
-      <div
-        className={`hamburger ${menuOpen ? "open" : ""}`}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
+      {/* Lucide Button */}
+      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? (
+          <X size={28} strokeWidth={2.5} />
+        ) : (
+          <Menu size={32} strokeWidth={2.5} color="lightblue" />
+        )}
       </div>
 
       <nav className={`navbar ${menuOpen ? "show" : ""}`}>
@@ -57,6 +60,7 @@ export default function Navigation() {
             <img src="home.png" alt="Home" />
             <span className="nav-label">Home</span>
           </li>
+
           <li
             className={`nav-item ${active === "about" ? "active" : ""}`}
             onClick={() => handleScroll("about")}
@@ -64,6 +68,7 @@ export default function Navigation() {
             <img src="about.png" alt="About" />
             <span className="nav-label">About</span>
           </li>
+
           <li
             className={`nav-item ${active === "myworks" ? "active" : ""}`}
             onClick={() => handleScroll("myworks")}
@@ -71,6 +76,7 @@ export default function Navigation() {
             <img src="works.png" alt="My Works" />
             <span className="nav-label">Works</span>
           </li>
+
           <li
             className={`nav-item ${active === "contact" ? "active" : ""}`}
             onClick={() => handleScroll("contact")}
