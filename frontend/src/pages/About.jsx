@@ -53,39 +53,48 @@ export default function About() {
       </div>
 
       <div className="about-right-section" data-aos="fade-up">
-        <h3 className="tech-header" data-aos="fade-up">Technologies</h3>
-        <div className="skills-grid" data-aos="fade-up">
-          <div className="skill-item" data-aos="fade-up">
-            <img src="react.png" alt="React" data-aos="fade-top"/>
-            <span className="tooltip">React</span>
+        <h3 className="tech-header" data-aos="fade-up">
+          Technologies
+        </h3>
+        <div className="skills-container">
+          <div className="skill-box s1">
+            <img src="react.png" />
+            <span>React</span>
           </div>
-          <div className="skill-item">
-            <img src="express.png" alt="Express" data-aos="fade-right" />
-            <span className="tooltip">Express</span>
+
+          <div className="skill-box s2">
+            <img src="node.png" />
+            <span>Node.js</span>
           </div>
-          <div className="skill-item">
-            <img src="tailwind.png" alt="Tailwind CSS" data-aos="fade-bottom"/>
-            <span className="tooltip">Tailwind CSS</span>
+
+          <div className="skill-box s3">
+            <img src="express.png" />
+            <span>Express</span>
           </div>
-          <div className="skill-item">
-            <img src="mysql.png" alt="MySQL" data-aos="fade-left"/>
-            <span className="tooltip">MySQL</span>
+
+          <div className="skill-box s4">
+            <img src="js.png" />
+            <span>JavaScript</span>
           </div>
-          <div className="skill-item">
-            <img src="js.png" alt="JavaScript" data-aos="fade-top"/>
-            <span className="tooltip">JavaScript</span>
+
+          <div className="skill-box s5">
+            <img src="mysql.png" />
+            <span>MySQL</span>
           </div>
-          <div className="skill-item">
-            <img src="node.png" alt="Node.js" data-aos="fade-right"/>
-            <span className="tooltip">Node.js</span>
+
+          <div className="skill-box s6">
+            <img src="mongo.png" />
+            <span>MongoDB</span>
           </div>
-          <div className="skill-item">
-            <img src="css.png" alt="CSS3" data-aos="fade-bottom"/>
-            <span className="tooltip">CSS3</span>
+
+          <div className="skill-box s7">
+            <img src="css.png" />
+            <span>CSS</span>
           </div>
-          <div className="skill-item">
-            <img src="/mongo.png" alt="MongoDB" data-aos="fade-left"/>
-            <span className="tooltip">MongoDB</span>
+
+          <div className="skill-box s8">
+            <img src="tailwind.png" />
+            <span>Tailwind</span>
           </div>
         </div>
       </div>

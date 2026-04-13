@@ -5,7 +5,7 @@
   --neon: #0b66ff;
   --neon-2: #1f8bff;
   --muted: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(15, 70, 140, 0.35);
+  --glass-border: rgba(15, 70, 140, 0.75);
   --accent: #1877f2;
   --radius: 14px;
   --max-width: 1200px;
@@ -306,4 +306,97 @@
   .tech-header {
     font-size: 22px;
   }
+}
+/*  SKILLS */
+
+.skills-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-top: 40px;
+}
+
+/* Base card */
+.skill-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  background: rgba(11, 102, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Icon */
+.skill-box img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Text */
+.skill-box span {
+  font-size: 13px;
+  color: white;
+}
+
+/* Hover glow */
+.skill-box:hover {
+  transform: scale(1.1);
+  border-color: var(--neon);
+  box-shadow: 0 0 20px rgba(11, 102, 255, 0.4);
+}
+/*  placement */
+
+.s1 { top: 10%; left: 20%; transform: rotate(-8deg); }
+.s2 { top: 25%; left: 60%; transform: rotate(6deg); }
+.s3 { top: 55%; left: 15%; transform: rotate(-5deg); }
+.s4 { top: 70%; left: 55%; transform: rotate(8deg); }
+.s5 { top: 35%; left: 35%; transform: rotate(-3deg); }
+.s6 { top: 15%; left: 75%; transform: rotate(10deg); }
+.s7 { top: 65%; left: 30%; transform: rotate(-7deg); }
+.s8 { top: 45%; left: 70%; transform: rotate(5deg); }
+@keyframes floaty {
+  0% { transform: translateY(0px) rotate(var(--r)); }
+  50% { transform: translateY(-10px) rotate(var(--r)); }
+  100% { transform: translateY(0px) rotate(var(--r)); }
+}
+
+.skill-box {
+  animation: floaty 4s ease-in-out infinite;
+}
+.s1 { --r: -8deg; }
+.s2 { --r: 6deg; }
+.s3 { --r: -5deg; }
+.s4 { --r: 8deg; }
+.s5 { --r: -3deg; }
+.s6 { --r: 10deg; }
+.s7 { --r: -7deg; }
+.s8 { --r: 5deg; }
+@media (max-width: 600px) {
+
+  .skills-container {
+    height: 500px; 
+    margin-top: 60px;
+  }
+
+  .skill-box {
+    transform: scale(0.9); 
+  }
+
+  .s1 { top: 5%; left: 10%; }
+  .s2 { top: 20%; left: 55%; }
+  .s3 { top: 45%; left: 5%; }
+  .s4 { top: 65%; left: 50%; }
+  .s5 { top: 30%; left: 30%; }
+  .s6 { top: 10%; left: 70%; }
+  .s7 { top: 70%; left: 20%; }
+  .s8 { top: 50%; left: 65%; }
+
 }

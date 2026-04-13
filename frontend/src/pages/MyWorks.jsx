@@ -131,7 +131,7 @@ export default function MyWorks() {
   return (
     <>
       {/* WORKS */}
-      <section className="section myworks">
+      <section className="section myworks" id="myworks">
         <h1>
           My Recent <span>Works</span>
         </h1>
