@@ -84,7 +84,7 @@ export default function About() {
             <span className="tooltip">CSS3</span>
           </div>
           <div className="skill-item">
-            <img src="mongodb.png" alt="MongoDB" data-aos="fade-left"/>
+            <img src="/mongo.png" alt="MongoDB" data-aos="fade-left"/>
             <span className="tooltip">MongoDB</span>
           </div>
         </div>

@@ -1,5 +1,18 @@
 import "../styles/Home.css";
 import { useState, useEffect } from "react";
+import {
+  Code2,
+  Braces,
+  TerminalSquare,
+  Cpu,
+  CodeXml,
+  Database,
+  Server,
+  LayoutDashboard,
+  Palette,
+  Blocks,
+  GitBranch,
+} from "lucide-react";
 
 export default function Home() {
   const cols = 25;
@@ -13,12 +26,11 @@ export default function Home() {
     window.addEventListener("resize", checkScreen);
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
+
   useEffect(() => {
     fetch(
       "https://my-portfolio-management-backend.onrender.com/api/visitors/increment",
-      {
-        method: "POST",
-      },
+      { method: "POST" },
     )
       .then((res) => res.json())
       .then((data) => {
@@ -31,11 +43,11 @@ export default function Home() {
 
   return (
     <section id="home" className="section homepage">
-      {/*  Background dots  */}
+      {/* DOTS BACKGROUND */}
       <div className="dots-background">
         {Array.from({ length: total }).map((_, i) => {
           const col = i % cols;
-          const fade = 0.05 + ((cols - col) / cols) * 0.35; // right → left subtle fade
+          const fade = 0.05 + ((cols - col) / cols) * 0.35;
           return (
             <span
               key={i}
@@ -48,10 +60,26 @@ export default function Home() {
         })}
       </div>
 
+      {/* FLOATING ICONS BACKGROUND */}
+      <div className="floating-icons-bg">
+        <Code2 className="bg-icon i1" />
+        <Braces className="bg-icon i2" />
+        <TerminalSquare className="bg-icon i3" />
+        <Cpu className="bg-icon i4" />
+        <CodeXml className="bg-icon i5" />
+        <Database className="bg-icon i6" />
+        <Server className="bg-icon i7" />
+        <LayoutDashboard className="bg-icon i8" />
+        <Palette className="bg-icon i9" />
+        <Blocks className="bg-icon i10" />
+        <GitBranch className="bg-icon i11" />
+      </div>
+
       <div className="home-main-container">
         <div className="home-left-side" data-aos="fade-up">
           <h1>Natnael Mekonnen</h1>
           <h3>Full-Stack Developer</h3>
+
           {isMobile && (
             <div className="image-circle mobile-image">
               <img src="Natnael.jpg" alt="Profile" />
@@ -63,7 +91,8 @@ export default function Home() {
             ALIVE. EVERY PROJECT I CREATE IS FOCUSED ON PERFORMANCE,
             SCALABILITY, AND EMOTION.
           </p>
-          <p>CREATIVE DEVELOPER, DESIGNER, PROBLEM SOLVER </p>
+          <p>CREATIVE DEVELOPER, DESIGNER, PROBLEM SOLVER</p>
+
           <div className="cta-container">
             <a href="#myworks">
               <div className="my-works-btn">

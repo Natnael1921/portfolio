@@ -190,6 +190,7 @@ textarea {
   color: rgba(255,255,255,0.9);
   font-weight: 500;
   letter-spacing: 0.2px;
+  
 }
 
 /* small divider line */
@@ -198,6 +199,10 @@ textarea {
   background: linear-gradient(90deg, rgba(11,102,255,0.14), transparent);
   width: 100%;
   margin: 8px 0;
+}
+.info-row a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Social icons row */
