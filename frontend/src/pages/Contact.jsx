@@ -47,19 +47,20 @@ export default function Contact() {
 
   return (
     <div id="contact" className="contact-page" data-aos="fade-up">
-      <div className="contact-container" data-aos="fade-up">
-        <section className="contact-left" data-aos="fade-up">
-          <h2 className="contact-title" data-aos="fade-up">
-            Lets <span className="accent">Talk</span> !
+      <div className="contact-container">
+        
+        {/* ── LEFT COLUMN: FORM ── */}
+        <section className="contact-left">
+          <div className="about-section-head left-aligned">
+            <span className="ab-line" />
+            <span className="about-section-title">Get In Touch</span>
+          </div>
+          <h2 className="contact-title">
+            Let's <span>Talk</span>!
           </h2>
-          <div className="hr" />
 
-          <form
-            className="contact-form"
-            onSubmit={handleSubmit}
-            data-aos="fade-up"
-          >
-            <div className="row">
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-row">
               <div className="field">
                 <label htmlFor="firstName">First name</label>
                 <input
@@ -67,7 +68,7 @@ export default function Contact() {
                   name="firstName"
                   value={form.firstName}
                   onChange={handleChange}
-                  placeholder="enter your first name..."
+                  placeholder="e.g. John"
                   type="text"
                   required
                 />
@@ -80,20 +81,20 @@ export default function Contact() {
                   name="lastName"
                   value={form.lastName}
                   onChange={handleChange}
-                  placeholder="enter your last name..."
+                  placeholder="e.g. Doe"
                   type="text"
                 />
               </div>
             </div>
 
             <div className="field full">
-              <label htmlFor="email">email</label>
+              <label htmlFor="email">Email Address</label>
               <input
                 id="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="enter your email..."
+                placeholder="john@example.com"
                 type="email"
                 required
               />
@@ -106,113 +107,105 @@ export default function Contact() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="enter your message..."
+                placeholder="Tell me about your project or inquiry..."
                 rows="6"
                 required
               />
             </div>
 
             <button className="btn-send" type="submit" disabled={loading}>
-              {loading ? "Sending..." : "Send Message"}
+              {loading ? (
+                <span className="btn-loader-text">Sending...</span>
+              ) : (
+                <>
+                  Send Message
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="btn-arrow">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </>
+              )}
             </button>
 
             {status === "success" && (
-              <p style={{ color: "#00ffae", marginTop: "10px" }}>
-                Message sent successfully , Thank You !
-              </p>
+              <div className="status-message success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <p>Message sent successfully, thank you!</p>
+              </div>
             )}
             {status === "error" && (
-              <p style={{ color: "red", marginTop: "10px" }}>
-                Failed to send message. Try again.
-              </p>
+              <div className="status-message error">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                <p>Failed to send message. Please try again.</p>
+              </div>
             )}
           </form>
         </section>
 
-        <aside className="contact-right" data-aos="fade-up">
+        {/* ── RIGHT COLUMN: INFO & VISUALS ── */}
+        <aside className="contact-right">
           <div className="contact-image-wrap">
             <img
               className="contact-image"
               src="contact1.png"
-              alt="contact visual"
-              data-aos="fade-up"
+              alt="Contact workflow dashboard visual"
             />
           </div>
 
-          <div className="contact-info" data-aos="fade-up">
-            <div className="info-row" data-aos="fade-up">
-              <svg
-                className="icon"
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                aria-hidden
-              >
-                <path
-                  fill="currentColor"
-                  d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.16 21 3 14.84 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"
-                />
-              </svg>
-              <a href="tel:+251910895476">
-                <span className="contact-text">+251910895476</span>
-              </a>
+          <div className="contact-info-card">
+            <div className="info-row">
+              <div className="info-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div className="info-details">
+                <span className="info-label">Call Directly</span>
+                <a href="tel:+251910895476" className="contact-text">+251 91 089 5476</a>
+              </div>
             </div>
 
-            <div className="divider" />
+            <div className="contact-card-divider" />
 
             <div className="info-row">
-              <svg
-                className="icon"
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                aria-hidden
-              >
-                <path
-                  fill="currentColor"
-                  d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5L4 8V6l8 5 8-5v2z"
-                />
-              </svg>
-              <a href="mailto:nnatnaelmekonnen19@gmail.com">
-                <span className="contact-text">
+              <div className="info-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div className="info-details">
+                <span className="info-label">Drop an Email</span>
+                <a href="mailto:nnatnaelmekonnen19@gmail.com" className="contact-text">
                   nnatnaelmekonnen19@gmail.com
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="socials">
-            <a
-              className="social"
-              href="https://t.me/Nathnaelmekonnen"
-              aria-label="telegram (demo)"
-            >
-              <img className="social-icon" src="telegram.png" />
-            </a>
+          <div className="socials-container">
+            <span className="socials-title-hint">Connect via Social Networks</span>
+            <div className="socials-row">
+              <a className="social-glass-btn" href="https://t.me/Nathnaelmekonnen" aria-label="Telegram Profile">
+                <img className="social-img" src="telegram.png" alt="Telegram" />
+              </a>
 
-            <a
-              className="social"
-              href="https://github.com/Natnael1921"
-              aria-label="github (demo)"
-            >
-              <img className="social-icon" src="github.png" />
-            </a>
+              <a className="social-glass-btn" href="https://github.com/Natnael1921" aria-label="GitHub Profile">
+                <img className="social-img" src="github.png" alt="GitHub" />
+              </a>
 
-            <a
-              className="social"
-              href="https://x.com/NatnaelMek896"
-              aria-label="x (demo)"
-            >
-              <img className="social-icon" src="x.png" />
-            </a>
+              <a className="social-glass-btn" href="https://x.com/NatnaelMek896" aria-label="X Twitter Profile">
+                <img className="social-img" src="x.png" alt="X" />
+              </a>
 
-            <a
-              className="social"
-              href="https://linkedin.com/in/natnael-mekonnen"
-              aria-label="linkedin (demo)"
-            >
-              <img className="social-icon" src="linked-in.png" />
-            </a>
+              <a className="social-glass-btn" href="https://linkedin.com/in/natnael-mekonnen" aria-label="LinkedIn Profile">
+                <img className="social-img" src="linked-in.png" alt="LinkedIn" />
+              </a>
+            </div>
           </div>
         </aside>
       </div>

@@ -16,17 +16,17 @@ export default function MyWorks() {
         const res = await API.get("/projects");
 
         const workProjects = res.data.filter(
-          (project) => project.category === "work",
+          (project) => project.category === "work"
         );
 
         const personal = res.data.filter(
-          (project) => project.category === "personal",
+          (project) => project.category === "personal"
         );
 
         setWorks(workProjects);
         setPersonalProjects(personal);
       } catch (err) {
-        console.log(err);
+        console.error("Error fetching projects:", err);
       } finally {
         setLoading(false);
       }
@@ -35,7 +35,6 @@ export default function MyWorks() {
     fetchProjects();
   }, []);
 
-  //  move container manually
   const moveSlider = (ref, direction) => {
     const el = ref.current;
     if (!el) return;
@@ -46,10 +45,11 @@ export default function MyWorks() {
     if (!group) return;
 
     const groupWidth = group.offsetWidth;
-    const moveAmount = 300;
+    const moveAmount = 340; // Adjusted for new card styling width
 
     const currentMargin = parseInt(
       window.getComputedStyle(el).marginLeft || "0",
+      10
     );
 
     let newMargin =
@@ -57,7 +57,6 @@ export default function MyWorks() {
         ? currentMargin + moveAmount
         : currentMargin - moveAmount;
 
-    //  SMOOTH LOOP
     if (newMargin <= -groupWidth) {
       newMargin += groupWidth;
     }
@@ -72,9 +71,10 @@ export default function MyWorks() {
       el.classList.remove("paused");
     }, 400);
   };
+
   const renderSkeletonCards = (count = 4) => {
     return Array.from({ length: count }).map((_, index) => (
-      <div key={index} className="works-card skeleton-card">
+      <div key={`skeleton-${index}`} className="works-card skeleton-card">
         <div className="skeleton skeleton-image"></div>
         <div className="skeleton skeleton-title"></div>
         <div className="skeleton skeleton-text"></div>
@@ -84,17 +84,26 @@ export default function MyWorks() {
   };
 
   const renderProjectCards = (projects, type) => {
+    // If no projects found, display fallback view
+    if (projects.length === 0) {
+      return (
+        <div className="empty-works-state">
+          <p>No projects listed under this category yet.</p>
+        </div>
+      );
+    }
+
     return [...Array(2)].map((_, i) => (
-      <div key={i} className="works-group">
+      <div key={`group-${type}-${i}`} className="works-group">
         {projects.map((project, index) => (
           <div key={`${type}-${index}-${i}`} className="works-card">
             <div className="image-wrapper">
               <img
-                src={project.imageUrl}
+                src={project.imageUrl || "placeholder-project.jpg"}
                 alt={project.title}
                 className="project-image"
+                loading="lazy"
               />
-
               <div className="image-overlay">
                 {project.liveDemoUrl && (
                   <a
@@ -106,7 +115,6 @@ export default function MyWorks() {
                     Live Demo
                   </a>
                 )}
-
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -114,14 +122,23 @@ export default function MyWorks() {
                     rel="noopener noreferrer"
                     className="overlay-btn github"
                   >
-                    View Code
+                    Codebase
                   </a>
                 )}
               </div>
             </div>
 
-            <h2>{project.title}</h2>
-            <p>{project.description}</p>
+            <div className="works-card-content">
+              <h3 className="project-title">{project.title}</h3>
+              <p className="project-desc">{project.description}</p>
+              {project.tags && (
+                <div className="project-tags">
+                  {project.tags.map((tag, idx) => (
+                    <span key={idx} className="project-tag-pill">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         ))}
       </div>
@@ -129,74 +146,92 @@ export default function MyWorks() {
   };
 
   return (
-    <>
-      {/* WORKS */}
-      <section className="section myworks" id="myworks">
-        <h1>
-          My Recent <span>Works</span>
-        </h1>
+    <div className="myworks-page-wrapper">
+      {/* ── CLIENT/COMMERCIAL WORKS ── */}
+      <section className="works-section" id="myworks">
+        <div className="about-section-head">
+          <span className="ab-line" />
+          <span className="about-section-title">Portfolio</span>
+          <span className="ab-line" />
+        </div>
+        <h2 className="works-main-heading">
+          Recent <span>Works</span>
+        </h2>
 
-        <div className="slider-wrapper">
+        <div className="slider-outer-wrapper">
           <button
-            className="nav-btn left"
+            className="slider-nav-btn left"
             onClick={() => moveSlider(worksRef, "left")}
+            aria-label="Scroll left"
           >
-            ‹
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
 
-          <div
-            ref={worksRef}
-            className={`works-container ${loading ? "loading-mode" : ""}`}
-          >
-            {loading ? (
-              <div className="works-group">{renderSkeletonCards(4)}</div>
-            ) : (
-              renderProjectCards(works, "work")
-            )}
+          <div className="slider-window">
+            <div
+              ref={worksRef}
+              className={`works-container ${loading ? "loading-mode" : ""}`}
+            >
+              {loading ? renderSkeletonCards(4) : renderProjectCards(works, "work")}
+            </div>
           </div>
 
           <button
-            className="nav-btn right"
+            className="slider-nav-btn right"
             onClick={() => moveSlider(worksRef, "right")}
+            aria-label="Scroll right"
           >
-            ›
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 5l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
         </div>
       </section>
 
-      {/* PERSONAL PROJECTS */}
-      <section className="section myworks personal-projects">
-        <h1>
+      {/* ── PERSONAL LAB PROJECTS ── */}
+      <section className="works-section personal-projects-section">
+        <div className="about-section-head">
+          <span className="ab-line" />
+          <span className="about-section-title">Experiments</span>
+          <span className="ab-line" />
+        </div>
+        <h2 className="works-main-heading">
           Personal <span>Projects</span>
-        </h1>
+        </h2>
 
-        <div className="slider-wrapper">
+        <div className="slider-outer-wrapper">
           <button
-            className="nav-btn left"
+            className="slider-nav-btn left"
             onClick={() => moveSlider(personalRef, "left")}
+            aria-label="Scroll left"
           >
-            ‹
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
 
-          <div
-            ref={personalRef}
-            className={`works-container ${loading ? "loading-mode" : ""}`}
-          >
-            {loading ? (
-              <div className="works-group">{renderSkeletonCards(4)}</div>
-            ) : (
-              renderProjectCards(personalProjects, "personal")
-            )}
+          <div className="slider-window">
+            <div
+              ref={personalRef}
+              className={`works-container ${loading ? "loading-mode" : ""}`}
+            >
+              {loading ? renderSkeletonCards(4) : renderProjectCards(personalProjects, "personal")}
+            </div>
           </div>
 
           <button
-            className="nav-btn right"
+            className="slider-nav-btn right"
             onClick={() => moveSlider(personalRef, "right")}
+            aria-label="Scroll right"
           >
-            ›
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 5l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 }
